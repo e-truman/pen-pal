@@ -1,6 +1,17 @@
 {
-    "penpals": [],
-    "topics": [],
+    "penpals": [
+        {"id": 1, "name": "Erin", "email": "erin@gmail.com"},
+        {"id": 2, "name": "Gregg Woods", "email": "gwoods@hotmail.com"},
+        {"id": 3, "name": "David Attenborough", "email": "dattenborough@aol.com"}
+    ],
+    "topics": [
+        {"id": 1, "name": "business"},
+        {"id": 2, "name": "friendly"},
+        {"id": 3, "name": "family"},
+        {"id": 4, "name": "congratulations"},
+        {"id": 5, "name": "condolences"}
+        
+    ],
     "letters": []
     
   }

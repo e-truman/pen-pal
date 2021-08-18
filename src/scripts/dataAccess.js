@@ -1,9 +1,9 @@
 //You will need to store that external data in your application state when you fetch it. Create a property named requests in your application state object. Its initial value must be an empty array.
 
-
-
 const applicationState = {
     letters: [],
+    penpals: [],
+    topics: []
 }
 
 const mainContainer = document.querySelector("#container")
@@ -22,11 +22,46 @@ export const fetchLetters = () => {
         )
 }
 
-// this function creates a copy of the array we put in the requests container
-export const getReservations = () => {
-    return applicationState.reservations
+// we need to fetch the authors  as well
+
+
+export const fetchPenpals = () => {
+    return fetch(`${API}/penpals`)
+        .then(response => response.json())
+        .then(
+            // this function puts the penpals, the paramater we called in the then function, into the empty array me made
+            (penpal) => {
+                // Store the external state in application state
+                applicationState.penpals = penpal
+            }
+        )
 }
 
+// and topics
+
+
+// this is fetching the data so that it is moved from application state.
+
+
+export const fetchTopics = () => {
+    return fetch(`${API}/topics`)
+        .then(response => response.json())
+        .then(
+            // this function puts the service requests, the paramater we called in the then function, into the empty array me made
+            (topic) => {
+                // Store the external state in application state
+                applicationState.topics = topic
+            }
+        )
+}
+
+
+// this function creates a copy of the array we put in the requests container
+export const getLetters = () => {
+    return applicationState.letters
+}
+
+// this funtion posts the info in the form to the API
 export const sendLetter = (userLetter) => {
     const fetchOptions = {
         method: "POST",
@@ -43,6 +78,18 @@ export const sendLetter = (userLetter) => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
     })
 }
+
+// we need to get penpals and topics too
+
+export const getPenpals = () => {
+    return applicationState.penpals.map(penpal => ({ ...penpal }))
+}
+
+
+export const getTopics = () => {
+    return applicationState.topics.map(penpal => ({...penpal}))
+}
+
 
 
 // When you use the DELETE method on an HTTP request, you must identify a single resource. therefore the function whose responsiblity it is to initiate the fetch request for DELETE must have the primary key sent to it as an argument.

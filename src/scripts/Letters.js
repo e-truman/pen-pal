@@ -13,7 +13,7 @@ mainContainer.addEventListener("click", click => {
 
 
 export const Letters = () => {
-    const reservations = getLetters()
+    const letters = getLetters()
 
     let html = `
         <ul>
